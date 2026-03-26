@@ -22,6 +22,7 @@ pytesseract>=0.3.10
 
 # Environment & Config
 python-dotenv>=1.0.0
+filelock>=3.13.0
 
 # HTTP
 requests>=2.31.0
