@@ -431,9 +431,10 @@ def _determine_pl_main_part_number(pl_text: str) -> str:
             logger.info(f"PL: header '{header_pn}' → multiple candidates: {candidates}")
             return 'MULTIPLE'
         else:
-            # No matching items → return header as-is (don't add -001)
-            logger.info(f"PL: header '{header_pn}' → no matching items, returning as-is")
-            return header_pn
+            # No matching items and no suffix on header → append default -001
+            resolved = f"{header_pn}-001"
+            logger.info(f"PL: header '{header_pn}' → no matching items, defaulting to '{resolved}'")
+            return resolved
     
     if len(manufactured) == 1:
         pn = manufactured[0]
