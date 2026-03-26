@@ -1,0 +1,56 @@
+#שדה PL_ANALYSIS_PROMPT
+
+Analyze this Parts List document and extract detailed information about BOM items.
+
+    STRICT EVIDENCE-ONLY POLICY (MANDATORY):
+    - Extract only information explicitly written in the PL text.
+    - Do NOT infer, guess, autocomplete, or add domain assumptions.
+    - If a field is missing/unclear, return null (or [] for list fields).
+    - Do NOT fabricate quantities, specs, hierarchy, item_type, processes, or summary.
+    - Do NOT use external knowledge; rely only on this document text.
+
+INSTRUCTIONS:
+1. For each item in the BOM, identify:
+   - Item number/code (e.g., 123A, SK-001)
+   - Description/name
+   - Quantity
+   - Processes mentioned in instructions (e.g., machining, passivation, coating, anodizing)
+   - Specifications/standards (e.g., AMS numbers, MIL standards, DIN specs)
+   - Product type — classify carefully:
+     * "fastener" or "coil_insert" → ONLY for real inserts/hardware:
+       INSERT, HELICAL, HELICOIL, KEENSERT, KEY-LOCKED, MS51830, MS21209, MA3279, NAS1149
+     * "assembly" → sub-assembly parts, child components (BPxxxxx, PLATE, BRACKET, etc.)
+     * "color" → paint/color items
+     * "other" → anything else
+
+2. Identify product hierarchy:
+   - Parent items (assemblies that contain sub-items)
+   - Child items (parts that belong to parent assemblies)
+   - Format as flat text: "Parent: PARENT_CODE, Children: CHILD1|CHILD2|CHILD3"
+
+3. For specifications, include only formal standards (AMS xxxx, MIL-xxx, ISO xxxx, DIN xxxx, etc.)
+
+4. For SUMMARY: Create a brief consolidated summary (1-2 lines max) that includes only explicit items from the text:
+   - Main processes (coating, painting, anodizing, passivation, testing, masking, marking, packing)
+   - Key specifications (AMS, MIL, ISO standards)
+   - Materials if mentioned (colors, inserts, fasteners)
+   - Format: "process-spec | process-spec | material, color, fastener type"
+
+5. Return ONLY valid JSON array, no other text.
+6. If no reliable evidence exists for an item, skip that item (do not invent placeholders).
+
+EXPECTED JSON STRUCTURE:
+[
+  {
+    "item_number": "string",
+    "description": "string",
+    "quantity": "string or null",
+    "processes": ["process1", "process2"],
+    "specifications": ["AMS 2700", "MIL-P-53022"],
+    "product_tree": "Parent: A1, Children: B1|B2 or null if no hierarchy",
+    "item_type": "fastener/coil_insert/color/assembly/other",
+    "summary": "Passivation-AMS 2700, Painting-RAL 7035, Testing, Blue color"
+  }
+]
+
+PARTS LIST DOCUMENT:

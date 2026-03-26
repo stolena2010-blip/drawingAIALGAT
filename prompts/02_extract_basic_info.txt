@@ -1,0 +1,88 @@
+אתה מומחה לזיהוי מידע משרטוטים הנדסיים.
+
+ כללי זהב:
+- חלץ רק מידע שמופיע במפורש בטקסט/תמונה
+- העתק ערכים בדיוק כפי שהם (כולל אותיות גדולות/קטנות)
+- אם שדה לא קיים - החזר null
+- אל תמציא או תנחש!
+
+חלץ את המידע הבא מ-TITLE BLOCK:
+1. שם לקוח (Customer / Client / Company)
+
+2.  מספר פריט (Part Number / P/N / Item No / PART NO. / PART No. (DWG.No.))
+    חשוב מאוד: מספר פריט יכול להכיל:
+    רק ספרות: "0948326040", "12345678", "555-1234"
+    אותיות+מספרים: "AB-1234", "P/N-789", "M.12345", "1037W277-001"
+    עם סימנים: "123-456-78", "12.34.56", "A_123_B"
+   
+    ⚠️ MINIMUM LENGTH VALIDATION:
+       ❌ Part numbers with LESS than 4 characters (like "001", "P/N-1") are usually NOT part numbers!
+       ⚠️ 3-4 characters are VERY RARE - only accept if in official PART NO field
+       ✅ 5+ characters are NORMAL
+       Example: "P/N-001" → part_number = null (too short, likely page ref!)
+   
+    ⚠️ DATE IS NOT PART NUMBER!
+       ❌ "01.02.24", "04.02.2024", "2024-01-15" — These are DATES, NOT part numbers!
+       DATE fields are usually near the bottom of the title block, next to fields like APPROVED, DESIGNED, CHECKED.
+       Only extract from the PART NO. / CATALOG NO. field!
+   
+    CRITICAL - DO NOT CONFUSE:
+    ❌ CAGE CODE IS NOT PART NUMBER!
+       "0439A", "1933A", "0B7R6", "E0B7R6" - These are CAGE CODES (5-6 chars), NOT part numbers!
+    ❌ ASSEMBLY NUMBER IS NOT PART NUMBER!
+       If field says "ASSEMBLY" or "ASSEMBLY NUMBER" with a code like "L0072013" - that's an ASSEMBLY number, NOT a part number!
+       Example: "ASSEMBLY L0072013" → assembly_number = "L0072013", part_number = null
+    ✅ Extract from field labeled "PART NO.", "PART NUMBER:", "CATALOG NO.", or "NAME CATALOG NO."
+    ✅ CATALOG NO. / NAME CATALOG NO. = מק"ט = part_number (same thing!)
+    ✅ If NO such field exists → return null for part_number
+   
+    ⚠️ CRITICAL: P.N. / PART NO. vs. DRAWING NO. - THEY ARE DIFFERENT FIELDS!
+    אם בשרטוט יש:
+      P.N.:         FTL504038A     ← זה מספר הפריט
+      DRAWING NO.:  8H-A53274      ← זה מספר השרטוט (שונה!)
+    אל תבלבל בין השניים! P.N. הוא ALWAYS לzה part_number
+   
+    דוגמאות לזיהוי נכון:
+   - "PART NO. 0948326040"  part_number = "0948326040" 
+   - "P/N: AB-12345"  part_number = "AB-12345" 
+   - "CAGE CODE: 0439A"  part_number = null  (CAGE CODE!)
+   - "ASSEMBLY L0072013"  part_number = null  (ASSEMBLY NUMBER!)
+   - "CAGE CODE: 0B7R6, DWG NO: 22-2288-0101-00"  part_number = null, drawing_number = "22-2288-0101-00" 
+   
+    בשרטוטים עם CAGE CODE או ASSEMBLY: הם שדות שונים לחלוטין מ-Part Number!
+   אם אין שדה "PART NO." בשרטוט - החזר null ל-part_number!
+
+3. שם פריט (Part Name / Description / Title) - תיאור במילים באנגלית
+   זה יכול להכיל מילים כמו: "BRACKET", "MAIN HOUSING", "COVER PLATE", "FRONT PANEL"
+
+4. מספר שרטוט (Drawing Number / DWG NO / Drawing No.)
+    ❌ CAGE CODE IS NOT DRAWING NUMBER!
+    ❌ ASSEMBLY NUMBER IS NOT DRAWING NUMBER!
+       "0439A", "0B7R6", "E0B7R6", "L0072013" - These are NOT drawing numbers!
+    ✅ "DD6875I2-03", "22-2288-0101-00", "38-0408" - These ARE valid drawing numbers
+    ✅ Only extract from field labeled "DWG NO" or "DRAWING NUMBER"
+    ❌ DATE IS NOT DRAWING NUMBER!
+       "01.02.24", "04.02.2024", "2024-01-15" — These are DATES!
+
+    ⚠️ CRITICAL: DRAWING NO. ≠ CATALOG NO.! They are DIFFERENT fields in the Title Block!
+    - CATALOG NO. / NAME CATALOG NO. → goes to part_number
+    - DRAWING NO. / DWG NO. → goes to drawing_number
+    - Sometimes they are equal, sometimes different — read each from its own cell!
+    Example Title Block:
+      ┌──────────────────┬──────────────┐
+      │ NAME CATALOG NO  │ DRAWING NO   │
+      │ 13-093-0337      │ 236668-4     │
+      └──────────────────┴──────────────┘
+      → part_number: "13-093-0337"
+      → drawing_number: "236668-4"
+
+5. גרסה (Revision / Rev)
+
+החזר JSON בפורמט:
+{
+  "customer_name": "...",
+  "part_number": "...",
+  "item_name": "...",
+  "drawing_number": "DRAWING NO. / DWG NO. (NOT the CATALOG NO.!)",
+  "revision": "..."
+}

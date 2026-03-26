@@ -1,0 +1,26 @@
+[
+    {
+        "file_path": "/tmp/test/drawing_12345.pdf",
+        "file_type": "DRAWING",
+        "associated_item": "12345-A",
+        "item_number": "DWG-001",
+        "revision": "B",
+        "original_filename": "drawing_12345.pdf"
+    },
+    {
+        "file_path": "/tmp/test/drawing_67890.pdf",
+        "file_type": "DRAWING",
+        "associated_item": "67890-C",
+        "item_number": "DWG-002",
+        "revision": "A",
+        "original_filename": "drawing_67890.pdf"
+    },
+    {
+        "file_path": "/tmp/test/order.pdf",
+        "file_type": "PURCHASE_ORDER",
+        "associated_item": "12345-A",
+        "item_number": "",
+        "revision": "",
+        "original_filename": "order.pdf"
+    }
+]

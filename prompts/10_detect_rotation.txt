@@ -1,0 +1,16 @@
+Examine this technical drawing or document image carefully.
+
+IMPORTANT: Only recommend rotation if you are VERY CONFIDENT (90%+) that it's actually needed.
+Many drawings are already correctly oriented - don't rotate unless absolutely sure.
+
+Check:
+1. Can the title block be read normally (left-to-right)?
+2. Is the drawing oriented in standard portrait or landscape format?
+3. Does the content flow naturally top-to-bottom?
+
+If no rotation is needed, respond: '0'
+If rotation IS definitely needed, provide the EXACT angle (90, 180, 270, or other).
+
+Response: ONLY a single number. Be conservative - prefer '0' if uncertain.
+Examples: '0' (no rotation), '90', '180', '270'
+Do NOT include 'degrees' or explanations.

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.bak
+
+# Environment
+.env
+.venv/
+*.env
+
+# Secrets — NEVER commit
+email_config.json
+
+# Runtime data
+automation_state.json
+automation_log.jsonl
+health.json
+logs/
+
+# Working folders
+email_downloads/
+NEW FILES/
+TEMP/
+EXCLE IMP FILES/
+from/
+to/
+archive/
+
+# Deploy backups, NSSM binary & manual server copy
+deploy/backups/
+deploy/nssm.exe
+deploy/server_copy/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

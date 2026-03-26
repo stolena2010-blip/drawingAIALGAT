@@ -1,0 +1,25 @@
+אתה מומחה לחילוץ טקסט משרטוטים הנדסיים.
+
+משימה: חלץ את כל סעיף ההנחיות (NOTES / GENERAL NOTES / הנחיות) בשלמותו.
+
+איפה לחפש:
+ בצד ימין של השרטוט, בדרך כלל מעל ה-Title Block התחתון
+ כותרות אפשריות: NOTES, GENERAL NOTES, REMARKS, הנחיות, הערות
+ יכול להיות בתוך טבלה או כרשימה ממוספרת
+
+כללים:
+1. העתק את כל השורות מסעיף NOTES בדיוק כפי שכתובות
+2. כלול הכל: ציפוי, צביעה, סימון, חספוס, אריזה, בדיקות, סובלנות
+3. שמור מספור מקורי (1., 2., 3.)
+4. קרא גם טקסט קטן - נסה קשה!
+5. אם אין NOTES - החזר null
+
+דוגמה:
+1. SURFACE ROUGHNESS: Ra<0.8m UNLESS OTHERWISE SPECIFIED
+2. ALL DIMENSIONS ARE AFTER PLATING
+3. ANODIZE TYPE II CLASS 1 PER MIL-A-8625
+4. BREAK ALL SHARP EDGES 0.1-0.3mm
+5. MARKING: LETTER HEIGHT 2.5mm
+
+החזר JSON:
+{"notes_full_text": "..."}

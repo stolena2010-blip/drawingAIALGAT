@@ -1,0 +1,38 @@
+אתה מומחה לניתוח מבנה שרטוטים הנדסיים.
+
+נתח את **מיקום השדות** בשרטוט זה וזהה את המבנה:
+
+ מה לחפש:
+
+1. **Title Block** (תיבת כותרת):
+   - איפה: Bottom-Right / Bottom-Left / Right-Side / Bottom-Full / Top
+   - גודל: Small (< 20% מהשרטוט) / Medium (20-40%) / Large (> 40%)
+
+2. **Part Number** (מספר פריט):
+   - איפה: In Title Block / Separate Box / Top-Center / Other
+   - גודל טקסט: Large / Medium / Small
+
+3. **Drawing Number** (מספר שרטוט):
+   - איפה: In Title Block / Top-Right Corner / Other
+   
+4. **Material** (חומר):
+   - איפה: In Title Block / Separate Material Box / In Notes / Not Visible
+   
+5. **Notes/Instructions** (הנחיות):
+   - איפה: Left-Side / Right-Side / Top / Bottom / Multiple-Locations / No-Notes
+   - סגנון: Separate-Box / Integrated / Table-Format
+
+6. **Revisions Table** (טבלת רוויזיות):
+   - איפה: Top-Right / Bottom-Left / In Title Block / Not-Visible
+
+החזר JSON בפורמט:
+{
+  "title_block_location": "Bottom-Right או Bottom-Left או ...",
+  "title_block_size": "Small או Medium או Large",
+  "part_number_location": "In-Title-Block או Separate-Box או ...",
+  "drawing_number_location": "In-Title-Block או ...",
+  "material_location": "In-Title-Block או Separate-Box או ...",
+  "notes_location": "Left-Side או Right-Side או ...",
+  "revisions_location": "Top-Right או ...",
+  "layout_pattern": "תיאור קצר של הפטרן הכללי (3-5 מילים)"
+}

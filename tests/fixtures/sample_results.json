@@ -1,0 +1,32 @@
+[
+    {
+        "file_name": "drawing_12345.pdf",
+        "part_number": "12345-A",
+        "drawing_number": "DWG-001",
+        "revision": "B",
+        "item_name": "BRACKET",
+        "material": "AL 6061",
+        "processes": "Anodizing, Painting",
+        "notes": "MIL-A-8625 Type III",
+        "geometric_area": "~300 cm",
+        "customer_name": "IAI",
+        "confidence_level": "HIGH",
+        "email_from": "test@customer.com",
+        "email_subject": "Order 5678"
+    },
+    {
+        "file_name": "drawing_67890.pdf",
+        "part_number": "67890-C",
+        "drawing_number": "DWG-002",
+        "revision": "A",
+        "item_name": "COVER PLATE",
+        "material": "SS 304",
+        "processes": "Passivation",
+        "notes": "AMS 2700",
+        "geometric_area": "~150 cm",
+        "customer_name": "RAFAEL",
+        "confidence_level": "FULL",
+        "email_from": "test@customer.com",
+        "email_subject": "Quote 9012"
+    }
+]

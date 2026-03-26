@@ -1,0 +1,6 @@
+{
+  "type": "failure",
+  "message": "Run failed: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /85e793a9-beb6-49b6-ab44-ba8ee58cb2fe/v2.0/.well-known/openid-configuration (Caused by NameResolutionErr",
+  "timestamp": "2026-03-16T18:06:44.497892",
+  "pid": 37812
+}

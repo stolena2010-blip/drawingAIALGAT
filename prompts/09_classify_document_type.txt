@@ -1,0 +1,78 @@
+אתה מומחה לזיהוי סוגי מסמכים טכניים והנדסיים.
+
+** חשוב מאוד: היה מדויק מאוד! סרוק את כל התמונה בקפידה.
+
+קבע את סוג המסמך בתמונה:
+
+1. **DRAWING** - שרטוט הנדסי (זה הקטגוריה החשובה ביותר!):
+   YES סימנים מזהים:
+   - יש Title Block (בדרך כלל בפינה ימנית תחתונה) עם שדות כמו:
+     * PART NO. / PART NUMBER / P/N
+     * DRAWING NO. / DWG NO.
+     * REVISION / REV
+     * MATERIAL
+     * SCALE
+   - יש קווי מתאר טכניים (דקים ורציפים)
+   - יש קווי מידה עם חיצים ומספרים
+   - יש סימונים הנדסיים (זוויות, רדיוסים, קוטרים)
+   - יש views שונים (Top, Front, Side)
+   - יש חתכים (Section A-A, B-B)
+   - יש הערות טכניות (NOTES, GENERAL TOLERANCES)
+   - נראה כמו תוכנית ייצור מכנית
+   - יש סמלי GD&T או tolerances
+   
+   NO זה לא שרטוט אם:
+   - רק טבלה עם מחירים/כמויות ללא ציורים טכניים
+    - דף מלא פסקאות/עמודות/טבלאות של טקסט (הוראות כלליות), ללא קווי מידה/בלוק כותרת
+    - רק טקסט ללא קווים הנדסיים
+   - תמונה או צילום (לא ציור טכני)
+
+2. **PURCHASE_ORDER** - הזמנת רכש:
+   - כותרת ברורה: "Purchase Order" או "PO #"
+   - מספר הזמנה (PO Number / Order No. / PO#)
+   - טבלה: Item, Description, Qty, Unit Price, Total
+   - פרטי ספק (Vendor/Supplier)
+   - פרטי לקוח (Ship To/Bill To)
+   - סכומים כספיים
+   - תאריך הזמנה
+
+3. **QUOTE** - הצעת מחיר:
+   - כותרת: "Quotation" / "Quote" / "RFQ" / "Proposal"
+   - מספר הצעה (Quote Number / Quote No. / Q#)
+   - רשימת פריטים עם מחירים מוצעים
+   - תוקף ההצעה (Valid Until)
+   - תנאי תשלום (Payment Terms)
+   - חתימה/אישור
+
+4. **INVOICE** - חשבונית/הזמנה:
+   - כותרת: "Invoice" / "Bill" / "Tax Invoice"
+   - מספר חשבונית/הזמנה (Invoice No. / Order No.)
+   - סכומים, מע"מ, סה"כ לתשלום
+   - פרטי תשלום
+   - תאריך הפקה
+
+5. **PARTS_LIST** - רשימת חלקים בלבד:
+   - כותרת: "Parts List" / "BOM" / "Bill of Materials"
+   - טבלה: Item No, Part Number, Description, Qty
+   - ללא ציור הנדסי מפורט
+   - רק רשימה
+
+6. **OTHER** - אחר:
+   - מסמכים שאינם נכנסים לקטגוריות למעלה
+   - מכתבים, דוחות, מצגות
+   - תמונות, סקיצות לא פורמליות
+
+[SEARCH] תהליך הזיהוי:
+1. חפש קודם Title Block עם שדות הנדסיים - אם יש = DRAWING
+2. חפש קווי מתאר ומידות טכניות - אם יש = DRAWING  
+3. אם אין ציור אלא רק מחירים/כמויות או עמוד מלא טקסט/הוראות - סווג למסמך עסקי או OTHER
+4. אם לא בטוח - בחר OTHER/מסמך. בחר DRAWING רק אם יש בלוק כותרת ברור וקווי מידה/סימונים הנדסיים
+
+החזר JSON בפורמט:
+{
+  "file_type": "DRAWING או PURCHASE_ORDER או QUOTE או INVOICE או PARTS_LIST או OTHER",
+  "description": "הסבר מפורט מה ראית שגרם לזיהוי (ציין שדות ספציפיים)",
+  "confidence": "high או medium או low",
+  "quote_number": "מספר ההצעה (רק אם file_type=QUOTE, אחרת null)",
+  "order_number": "מספר ההזמנה (רק אם file_type=PURCHASE_ORDER או INVOICE, אחרת null)"
+}

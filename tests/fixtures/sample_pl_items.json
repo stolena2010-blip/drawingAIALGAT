@@ -1,0 +1,12 @@
+[
+    {
+        "pl_filename": "PL_12345.pdf",
+        "item_number": "FASTENER-A1",
+        "description": "Hex bolt M6x20",
+        "quantity": "12",
+        "processes": ["passivation"],
+        "specifications": ["AMS 2700"],
+        "associated_item": "12345-A",
+        "matched_item_name": "12345-A"
+    }
+]

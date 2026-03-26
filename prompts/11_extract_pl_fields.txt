@@ -1,0 +1,48 @@
+Analyze this Parts List (PL) document. Extract 4 categories.
+Return ONLY valid JSON — no other text.
+
+RULES:
+- Extract ONLY information explicitly in the document.
+- If a category has no data, return empty array [].
+- Keep all values SHORT and concise.
+
+### 1. processes — surface treatments from NOTES section
+- "name": short English name (e.g. "Chromic Acid Anodize")
+- "name_heb": short Hebrew name (e.g. "אנודייז כרומי")
+- "spec": spec number only (e.g. "PS231120", "MIL-DTL-5541 Cl.3")
+
+### 2. paint — painting info from NOTES + BOM items 901+
+- "type_heb": Hebrew type: "פריימר" / "צבע עליון" / "צביעה" / "אנודייז צבוע"
+- "spec": spec number (e.g. "MIL-PRF-23377")
+- "color": color code only (e.g. "36375") or empty string
+
+### 3. hardware — ONLY fasteners/inserts from ITEMIZED PARTS LIST (Buy items)
+- "pn": part number only (e.g. "MS21209-F1-15")
+- "qty": number only (e.g. "8")
+- "seq": Seq No value exactly as shown in the PL (e.g. "6", "Alt", "GL_alt"). Empty string if not visible.
+- "desc": short part description from the PL (e.g. "COIL INSERT", "KEY-LOCKED INSERT"). Empty string if not visible.
+- ✅ INCLUDE ONLY: INSERT, HELICAL, HELICOIL, KEENSERT, KEY-LOCKED, COIL INSERT items
+  Standard PNs: MS51830, MS51831, MS21209, MS122xxx, MS124xxx, MA3279, NAS1149, IOI, KN
+  Rafael PNs: 402xxxxxx
+  Other insert PNs: 1191-xxx, 2TNF-xxx, or any PN described as INSERT/COIL/HELICOIL in the PL
+- Include GL_alt items with "GL_alt" prefix (e.g. "GL_alt 2TNC-06C-0276SF")
+- Items with "Alt" in the Seq No column are ALTERNATIVES — include them with seq="Alt"
+- EXCLUDE: the main assembly part number itself (self-reference)
+- EXCLUDE: raw material (plate, rod, bar, sheet, tube) — these go in category 4
+- EXCLUDE: sub-assembly parts / child components (BPxxxxx, PLATE, BRACKET, HOUSING, FRAME, COVER)
+
+### 4. material — raw material from PARTS LIST (plate, bar, rod, sheet, tube)
+- "pn": part number (e.g. "P 6061 T651 5/8IN M")
+- "desc": short description (e.g. "PLATE AL 6061-T651")
+- "spec": material spec if present (e.g. "AMS 4027N") or empty string
+- "qty": quantity (e.g. "0.0015") or empty string
+
+JSON:
+{
+  "processes": [{"name": "", "name_heb": "", "spec": ""}],
+  "paint": [{"type_heb": "", "spec": "", "color": ""}],
+  "hardware": [{"pn": "", "qty": "", "seq": "", "desc": ""}],
+  "material": [{"pn": "", "desc": "", "spec": "", "qty": ""}]
+}
+
+DOCUMENT:

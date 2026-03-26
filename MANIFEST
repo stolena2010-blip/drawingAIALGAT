@@ -1,0 +1,177 @@
+MANIFEST  20260325
+
+Total files: 102
+
+Included files:
+============================================================
+ROOT
+  .env.example                                            4.6 KB
+  automation_config.json                                  2.1 KB
+  automation_main.py                                      1.8 KB
+  automation_panel_gui.py                                 74.8 KB
+  automation_runner.py                                    100.6 KB
+  CHANGELOG.md                                            1.8 KB
+  check_next_run.py                                       1.1 KB
+  COST_ANALYSIS.md                                        9.8 KB
+  customer_extractor_gui.py                               57.8 KB
+  customer_extractor_v3_dual.py                           115.3 KB
+  dashboard_gui.py                                        77.2 KB
+  email_config.example.json                               208 bytes
+  email_config.json                                       44 bytes
+  email_connector_ews.py                                  13.7 KB
+  email_panel_gui.py                                      24.6 KB
+  main.py                                                 1.7 KB
+  MANIFEST                                                —
+  process_analysis.py                                     15.1 KB
+  PROJECT_SUMMARY.md                                      9.6 KB
+  pytest.ini                                              107 bytes
+  README.md                                               2.8 KB
+  requirements.lock                                       2.2 KB
+  requirements.txt                                        574 bytes
+  Run_GUI.bat                                             1.3 KB
+  Run_Statistics.bat                                      365 bytes
+  Run_Web.bat                                             745 bytes
+
+BOM\
+  B2BDraw_MECHBA1567-01 RFM BASE_DRAFT_30.pdf            525.9 KB
+  COLORS.xlsx                                             73.2 KB
+  INSERTS.xlsx                                            180.4 KB
+
+deploy\
+  install_server.ps1                                      7.2 KB
+  register_service.ps1                                    2.8 KB
+  UPDATE.bat                                              282 bytes
+  update.ps1                                              4.9 KB
+
+DIAGNOSTICS\
+  01_PROJECT_OVERVIEW.md                                  13.0 KB
+  02_DEPENDENCY_MAP.md                                    8.8 KB
+  03_FUNCTION_REGISTRY.md                                 12.7 KB
+  04_DATA_FLOW.md                                         8.5 KB
+  05_MODELS_AND_COSTS.md                                  7.3 KB
+  06_VALIDATED_EXTERNAL_REVIEW.md                         7.6 KB
+  DrawingAI_External_Diagnostic_20260321_135320.zip       1,011.6 KB
+  DrawingAI_Pro_Engineering_Automation.pdf                 11,212.9 KB
+  README.md                                               4.6 KB
+
+prompts\
+  01_identify_drawing_layout.txt                          1.6 KB
+  02_extract_basic_info.txt                               4.6 KB
+  03_extract_processes.txt                                12.9 KB
+  04_extract_notes_text.txt                               1.0 KB
+  05_calculate_geometric_area.txt                         1.7 KB
+  06_extract_basic_info_rafael.txt                        9.5 KB
+  06b_extract_processes_from_notes.txt                    10.6 KB
+  07_extract_quantities_from_email.txt                    7.7 KB
+  07b_extract_quantities_fallback.txt                     612 bytes
+  08_extract_item_details_from_orders.txt                 5.4 KB
+  09_classify_document_type.txt                           3.7 KB
+  09_merge_work_descriptions.txt                          8.3 KB
+  10_detect_rotation.txt                                  728 bytes
+  11_extract_pl_fields.txt                                2.4 KB
+  12_analyze_pl_bom.txt                                   2.5 KB
+
+src\
+  __init__.py                                             0 bytes
+  core\__init__.py                                        653 bytes
+  core\config.py                                          6.3 KB
+  core\constants.py                                       3.7 KB
+  core\cost_tracker.py                                    3.9 KB
+  core\exceptions.py                                      1.4 KB
+  models\__init__.py                                      0 bytes
+  models\drawing.py                                       6.0 KB
+  models\enums.py                                         1.4 KB
+  services\__init__.py                                    0 bytes
+  services\ai\__init__.py                                 181 bytes
+  services\ai\model_runtime.py                            9.2 KB
+  services\ai\vision_api.py                               16.1 KB
+  services\email\__init__.py                              71 bytes
+  services\email\factory.py                               5.5 KB
+  services\email\graph_auth.py                            8.7 KB
+  services\email\graph_helper.py                          21.6 KB
+  services\email\graph_mailbox.py                         36.6 KB
+  services\email\shared_mailbox.py                        22.0 KB
+  services\extraction\__init__.py                         1.6 KB
+  services\extraction\color_price_lookup.py               12.1 KB
+  services\extraction\document_reader.py                  52.5 KB
+  services\extraction\drawing_pipeline.py                 41.0 KB
+  services\extraction\filename_utils.py                   22.7 KB
+  services\extraction\insert_price_lookup.py              6.6 KB
+  services\extraction\insert_validator.py                 4.8 KB
+  services\extraction\ocr_engine.py                       24.2 KB
+  services\extraction\pn_voting.py                        15.9 KB
+  services\extraction\post_processing.py                  5.4 KB
+  services\extraction\quantity_matcher.py                  26.4 KB
+  services\extraction\sanity_checks.py                    29.7 KB
+  services\extraction\stage9_merge.py                     17.1 KB
+  services\extraction\stages_generic.py                   19.1 KB
+  services\extraction\stages_iai.py                       12.5 KB
+  services\extraction\stages_rafael.py                    15.4 KB
+  services\file\__init__.py                               284 bytes
+  services\file\classifier.py                             15.6 KB
+  services\file\file_renamer.py                           3.1 KB
+  services\file\file_utils.py                             30.2 KB
+  services\image\__init__.py                              283 bytes
+  services\image\processing.py                            35.3 KB
+  services\reporting\__init__.py                          357 bytes
+  services\reporting\b2b_export.py                        12.3 KB
+  services\reporting\excel_export.py                      31.4 KB
+  services\reporting\pl_generator.py                      44.8 KB
+  ui\__init__.py                                          0 bytes
+  ui\gui\__init__.py                                      0 bytes
+  utils\__init__.py                                       47 bytes
+  utils\logger.py                                         4.3 KB
+  utils\prompt_loader.py                                  1.2 KB
+
+streamlit_app\
+  __init__.py                                             0 bytes
+  app.py                                                  2.3 KB
+  brand.py                                                18.0 KB
+  backend\__init__.py                                     0 bytes
+  backend\config_manager.py                               2.7 KB
+  backend\email_helpers.py                                4.3 KB
+  backend\excel_report_builder.py                         25.7 KB
+  backend\log_reader.py                                   13.4 KB
+  backend\report_exporter.py                              1.6 KB
+  backend\runner_bridge.py                                17.1 KB
+  components\__init__.py                                  0 bytes
+  pages\1_🚀_Automation.py                               43.9 KB
+  pages\2_📊_Dashboard.py                                47.3 KB
+  pages\3_📧_Email.py                                    2.4 KB
+
+tests\
+  __init__.py                                             0 bytes
+  conftest.py                                             3.0 KB
+  fixtures\sample_classifications.json                    741 bytes
+  fixtures\sample_pl_items.json                           327 bytes
+  fixtures\sample_results.json                            990 bytes
+  test_automation_utils.py                                4.2 KB
+  test_b2b_export.py                                      5.6 KB
+  test_classifier_guards.py                               5.4 KB
+  test_color_price_lookup.py                              9.6 KB
+  test_constants.py                                       1.2 KB
+  test_drawing_pipeline.py                                3.9 KB
+  test_excel_export.py                                    2.4 KB
+  test_file_classification.py                             3.0 KB
+  test_file_utils.py                                      3.3 KB
+  test_filename_utils.py                                  5.8 KB
+  test_graph_helper.py                                    3.0 KB
+  test_heavy_email.py                                     3.5 KB
+  test_image_processing.py                                4.6 KB
+  test_insert_price_lookup.py                             4.2 KB
+  test_insert_validator.py                                4.6 KB
+  test_normalize_item.py                                  2.7 KB
+  test_part_number_fallback.py                            8.6 KB
+  test_pl_part_number.py                                  5.7 KB
+  test_pn_voting.py                                       2.0 KB
+  test_quantity_matcher.py                                4.6 KB
+  test_sanity_checks.py                                   8.3 KB
+  test_scan_folder_flow.py                                3.1 KB
+  test_structured_bom.py                                  13.0 KB
+  test_validate_notes.py                                  2.6 KB
+  test_vision_api.py                                      1.4 KB
+
+Excluded:
+  .env, .venv/, __pycache__/, .pytest_cache/, .git/, .github/,
+  .streamlit/, logs/, NEW FILES/, status_log.txt,
+  automation_log.jsonl, automation_state.json, alert.json, health.json
